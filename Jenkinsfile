@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Gradle과 JDK를 Jenkins에서 사용하도록 설정
-        gradle 'Gradle-8.5'
-        myJdk 'JDK 21'
-    }
-
     stages {
         stage('Checkout') {
             steps {
