@@ -1,13 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-            PATH = "/usr/local/bin:${env.PATH}"
-    }
     stages {
         stage('install-android-sdk') {
             steps {
-                sh "wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip"
+                sh "curl -0 https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip"
                 sh "unzip *.zip"
                 sh "rm *.zip"
                 sh "echo 'y' | cmdline-tools/bin/sdkmanager --sdk_root=sdk 'platform-tools'"
