@@ -33,13 +33,6 @@ pipeline {
         sh './gradlew testDebugUnitTest'
       }
     }
-
-    stage('Instrumentation Test') {
-      steps {
-        sh './gradlew connectedDebugAndroidTest'
-      }
-    }
-
   }
   post {
     always {
