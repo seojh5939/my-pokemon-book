@@ -1,4 +1,4 @@
-package com.example.mypokemonbook.ui.theme
+package com.david.mypokemonbook.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

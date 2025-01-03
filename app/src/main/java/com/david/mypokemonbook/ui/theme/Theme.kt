@@ -1,6 +1,5 @@
-package com.example.mypokemonbook.ui.theme
+package com.david.mypokemonbook.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

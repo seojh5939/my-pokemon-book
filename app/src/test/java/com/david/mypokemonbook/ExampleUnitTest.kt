@@ -1,4 +1,4 @@
-package com.example.mypokemonbook
+package com.david.mypokemonbook
 
 import org.junit.Test
 

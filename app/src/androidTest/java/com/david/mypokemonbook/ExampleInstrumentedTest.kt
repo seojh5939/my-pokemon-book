@@ -1,4 +1,4 @@
-package com.example.mypokemonbook
+package com.david.mypokemonbook
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
