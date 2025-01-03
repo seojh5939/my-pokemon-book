@@ -23,6 +23,7 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh 'echo "sdk.dir=/Users/david/.jenkins/workspace/my-pokemon-book_develop/sdk" >> local.properties'
         sh './gradlew assembleDebug'
       }
     }
