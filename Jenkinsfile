@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('install-android-sdk') {
       steps {
-        sh 'curl -0 https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip'
+        sh 'curl -0 https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip > /Users/david/.jenkins/workspace/my-pokemon-book_develop/commandlinetools-linux-6858069_latest.zip'
        sh '''
            pwd
            ls -l
