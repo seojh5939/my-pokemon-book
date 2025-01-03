@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment {
+            PATH = "/usr/local/bin:${env.PATH}"
+    }
     stages {
         stage('install-android-sdk') {
             steps {
