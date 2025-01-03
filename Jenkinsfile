@@ -4,10 +4,10 @@ pipeline {
     stage('install-android-sdk') {
       steps {
         sh 'curl -0 https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip'
-        sh '''sh \'\'\'
-    pwd
-    ls -l
-\'\'\''''
+       sh '''
+           pwd
+           ls -l
+       '''
         sh 'unzip *.zip'
         sh 'rm *.zip'
         sh 'echo \'y\' | cmdline-tools/bin/sdkmanager --sdk_root=sdk \'platform-tools\''
