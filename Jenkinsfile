@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('install-android-sdk') {
             steps {
-                sh "rm -rf *"
                 sh "wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip"
                 sh "unzip *.zip"
                 sh "rm *.zip"
