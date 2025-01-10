@@ -1,21 +1,19 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("com.david.mypokemonbook.application")
+    id("com.david.mypokemonbook.application.compose")
+    id("com.david.mypokemonbook.hilt")
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
-    namespace = "com.example.mypokemonbook"
-    compileSdk = 35
+    namespace = "com.david.mypokemonbook"
 
     defaultConfig {
-        applicationId = "com.example.mypokemonbook"
-        minSdk = 26
-        targetSdk = 35
+        applicationId = "com.david.mypokemonbook"
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AppTestRunner"
     }
 
     buildTypes {
@@ -27,33 +25,58 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
-        compose = true
+        buildConfig = true
+    }
+
+    hilt {
+        enableAggregatingTask = true
+    }
+
+    testOptions.unitTests {
+        isIncludeAndroidResources = true
+        isReturnDefaultValues = true
     }
 }
 
 dependencies {
+    // projects
+    implementation(projects.local)
+    implementation(projects.remote)
+    implementation(projects.data)
+    implementation(projects.domain)
+    implementation(projects.presentation)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    // features
+    implementation(projects.feature.home)
+    implementation(projects.feature.detail)
+
+    // cores
+    implementation(projects.core.designsystem)
+
+    // compose
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.foundation)
+
+    // di
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
+    implementation(libs.androidx.material3.android)
+    ksp(libs.hilt.compiler)
+    androidTestImplementation(libs.hilt.testing)
+    kspAndroidTest(libs.hilt.compiler)
+
+    // unit test
     testImplementation(libs.junit)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.truth)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.androidx.espresso)
 }

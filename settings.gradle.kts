@@ -1,4 +1,29 @@
+@file:Suppress("UnstableApiUsage")
+
+include(":data")
+
+
+
+include(":core:designsystem")
+
+
+include(":local")
+
+
+include(":remote")
+
+
+include(":presentation")
+
+
+include(":feature:detail")
+
+
+include(":feature:home")
+
+
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -21,3 +46,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyPokemonBook"
 include(":app")
+include(":feature")
+include(":core")
+include(":domain")
